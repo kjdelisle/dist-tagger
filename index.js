@@ -33,7 +33,7 @@ if (!configFile) {
 debug('args: %j', process.argv);
 debugger;
 var validOps = [
-  'add',
+  'tag',
   'rm',
   'view',
 ];
@@ -49,15 +49,17 @@ if (!conf) {
 }
 
 switch (op) {
-  case 'add':
-    var tag = process.argv[4];
+  case 'tag':
+    var tag = process.argv[4] || conf.tag;
     if (!tag) {
+      console.log('No tag was specified in the config file or as an argument!');
       return printUsage();
     }
-    return operations.add(conf.packages, tag);
+    return operations.tag(conf.packages, tag);
   case 'rm':
-    var tag = process.argv[4];
+    var tag = process.argv[4] || conf.tag;
     if (!tag) {
+      console.log('No tag was specified in the config file or as an argument!');
       return printUsage();
     }
     return operations.rm(conf.packages, tag);
