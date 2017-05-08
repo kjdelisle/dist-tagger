@@ -10,6 +10,7 @@ Requires a JSON file that gives the package list in
 this format:
 ```
 {
+  tag: "foo-bar",
   packages: [
     sample@1.2.3,
     otherSample@2.4.6
